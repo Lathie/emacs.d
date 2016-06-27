@@ -68,6 +68,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x f") 'helm-find-files)
 
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq-default require-final-newline t)
 (setq-default tab-width 2)
 (setq-default c-basic-offset 2)
