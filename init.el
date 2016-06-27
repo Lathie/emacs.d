@@ -1,6 +1,7 @@
 (delete-selection-mode)
 (fset 'init-file
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([24 6 67108896 1 backspace 126 47 46 101 109 97 99 115 46 100 47 105 110 105 116 46 101 108 return] 0 "%d")) arg)))
+
 (blink-cursor-mode 0)
 (set-face-attribute 'default nil :height 140)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -25,23 +26,15 @@
    t)
   (package-initialize))
 
-;;(load-theme 'blackboard t)
+;(load-theme 'blackboard t)
 ;(require 'solarized)
-
 ;(deftheme solarized-dark "The dark variant of the Solarized colour theme")
-
 ;(create-solarized-theme 'dark 'solarized-dark)
-
 ;(provide-theme 'solarized-dark)
-
-;;(global-linum-mode 1)
-
+;(global-linum-mode 1)
 ;(set-default-font "Anonymous Pro-18") 
 
 (setq-default indent-tabs-mode t)
-(setq tab-width 1) ; or any other preferred value
-    (defvaralias 'c-basic-offset 'tab-width)
-    (defvaralias 'cperl-indent-level 'tab-width)
 
 ;helm stufffff
 (require 'helm)
@@ -51,7 +44,7 @@
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x C-f") 'helm-projectile)
 (global-unset-key (kbd "C-x c"))
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
@@ -73,3 +66,10 @@
 (helm-mode 1)
 
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x f") 'helm-find-files)
+
+(setq-default require-final-newline t)
+(setq-default tab-width 2)
+(setq-default c-basic-offset 2)
+(setq-default ruby-indent-level 2)
+(setq-default js-indent-level 2)
