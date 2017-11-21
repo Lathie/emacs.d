@@ -10,7 +10,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
+ ;; '(custom-enabled-themes (quote (sanityinc-tomorrow-eighties)))
  '(custom-safe-themes
    (quote
     ("628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
@@ -18,7 +18,7 @@
  '(org-agenda-files (quote ("~/org-files/permissions.org")))
  '(package-selected-packages
    (quote
-    (web-mode go-mode color-theme-sanityinc-tomorrow solarized-theme magit helm-projectile))))
+    (avy web-mode go-mode color-theme-sanityinc-tomorrow solarized-theme magit helm-projectile))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -96,7 +96,10 @@
 (require 'color-theme-sanityinc-tomorrow)
 (color-theme-sanityinc-tomorrow-eighties)
 
-(set-default-font "mononoki-14")
+(set-default-font "mononoki-20")
+(setq default-frame-alist '((font . "mononoki-20")))
+(add-to-list 'default-frame-alist
+                          '(vertical-scroll-bars . nil))
 
 (setq system-uses-terminfo nil)
 
@@ -109,3 +112,11 @@
 														 "~/org-files/permissions.org"))
 
 (setq web-mode-code-indent-offset 2)
+
+(global-set-key (kbd "C-c g") 'avy-goto-char)
+
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'gofmt-before-save)
+            (setq tab-width 4)
+            (setq indent-tabs-mode 1)))
