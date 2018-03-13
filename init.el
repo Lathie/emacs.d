@@ -83,8 +83,6 @@
 (setq-default js-indent-level 2)
 (setq-default indent-tabs-mode nil)
 
-
-
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
 (scroll-bar-mode 0)
@@ -92,6 +90,7 @@
 (menu-bar-mode 0)
 (setq ring-bell-function 'ignore)
 
+(setq tramp-default-method "ssh")
 
 (require 'color-theme-sanityinc-tomorrow)
 (color-theme-sanityinc-tomorrow-eighties)
@@ -120,3 +119,7 @@
             (add-hook 'before-save-hook 'gofmt-before-save)
             (setq tab-width 4)
             (setq indent-tabs-mode 1)))
+
+
+(set-frame-parameter (selected-frame) 'alpha '(95 . 85))
+(add-to-list 'default-frame-alist '(alpha . (95 . 85)))
