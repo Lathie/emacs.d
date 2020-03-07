@@ -1,3 +1,4 @@
+(delete-selection-mode)
 (blink-cursor-mode 0)
 
 (when (>= emacs-major-version 24)
@@ -79,3 +80,7 @@
 
 (set-frame-parameter (selected-frame) 'alpha '(95 . 85))
 (add-to-list 'default-frame-alist '(alpha . (95 . 85)))
+
+(savehist-mode 1)
+(setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+(setq savehist-file "~/.emacs.d/tmp/savehist")
