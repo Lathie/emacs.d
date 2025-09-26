@@ -11,7 +11,6 @@
 
 ;; Set up Helm
 (require 'helm)
-(require 'helm-config)
 (helm-autoresize-mode 1)
 (helm-mode 1)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
@@ -44,7 +43,7 @@
 
 (setq initial-scratch-message "")
 (setq inhibit-startup-message t)
-(scroll-bar-mode 0)
+;; (scroll-bar-mode 0) ;; doesn't work on macos
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (setq ring-bell-function 'ignore)
@@ -55,7 +54,7 @@
 (require 'color-theme-sanityinc-tomorrow)
 (color-theme-sanityinc-tomorrow-eighties)
 
-(set-default-font "mononoki-20")
+(set-frame-font "mononoki-20")
 (setq default-frame-alist '((font . "mononoki-20")))
 (add-to-list 'default-frame-alist
                           '(vertical-scroll-bars . nil))
@@ -84,3 +83,28 @@
 (savehist-mode 1)
 (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
 (setq savehist-file "~/.emacs.d/tmp/savehist")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(sanityinc-tomorrow-eighties))
+ '(package-selected-packages
+   '(auto-package-update avy color-theme-sanityinc-tomorrow go-mode
+                         helm-projectile magit pkg-info popup
+                         rust-mode solarized-theme web-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(use-package auto-package-update
+  :custom
+  (auto-package-update-interval 7)
+  (auto-package-update-prompt-before-update t)
+  (auto-package-update-hide-results t)
+  :config
+  (auto-package-update-maybe)
+  (auto-package-update-at-time "09:00"))
